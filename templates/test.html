@@ -1,0 +1,15 @@
+<title>test</title>
+<form method="POST" action="{% url 'test' %}">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit" , name='save' value='save'>Post</button>
+
+    <select class="custom-select mb-4" name='primary_category'>
+        <option selected> Open this select menu</option>
+        {% for translation in class_object %}
+        <option value="{{translation.pk}}">{{translation.translation}}</option>
+        {% endfor %}
+    </select>
+</form>
+<!-- name attribute is used to reference form-data after the form has been submitted, 
+    or to reference the element in a js-->

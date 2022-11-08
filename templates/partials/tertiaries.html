@@ -1,0 +1,6 @@
+<select class="custom-select mb-4" name='final choice'>
+    <option selected> Open this select menu</option>
+    {% for name in tertiary_category %}
+    <option value="{{name.pk}}" >{{name.name}}</option>
+    {% endfor %}
+</select>

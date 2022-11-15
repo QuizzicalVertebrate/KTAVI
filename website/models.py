@@ -72,6 +72,8 @@ class Sefer(models.Model):
     primary_category = models.CharField(max_length= 100, blank= True)
     prime_cat = models.ForeignKey(PrimaryCategory, 
     on_delete= models.CASCADE,  default = 0, related_name= 'prime_cat')
+    secondary_cat = models.ForeignKey(SecondaryCategory, 
+    on_delete= models.CASCADE,  default = 0, related_name= 'secondary_cat', blank = True)
     
     def __str__(self):
         return self.book

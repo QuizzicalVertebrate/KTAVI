@@ -141,6 +141,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+#sooo cool. I caught this one from an error message and just up and fixed it by adding this field
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000
+
 
 
 

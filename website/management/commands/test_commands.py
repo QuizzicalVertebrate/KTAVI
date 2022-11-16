@@ -1,3 +1,6 @@
+#this program works for two leve objects. Need to think about the best way forwards for the other 
+#levels given that its variable. Enough for proof of concept. 
+
 from website.models import Sefer, PrimaryCategory, SecondaryCategory
 
 

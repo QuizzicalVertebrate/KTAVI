@@ -16,9 +16,9 @@ r = requests.get("http://www.sefaria.org/api/index/")
 
 data = json.loads(r.text)
 
-object = (data[0]['contents'][5]['contents'][0]['contents'][0]["contents"][0])
-for x in object['categories']:
-    print(x)
+object = (data[0]['contents'][3]['contents'][2]['contents'][0])
+# for x in object['categories']:
+#     print(x)
 
 print(object)
 #grab a object and grab its categories in order and send them to the right spots on the model

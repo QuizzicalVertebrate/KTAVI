@@ -57,7 +57,7 @@ class Command(BaseCommand):
         #     #     break 
 #the q is the conceptual mistake. I cant reset the var in the loop beofre the break cuz.
 #thats just an infinite loop 
-        while z < 5:
+        while z < 20:
             try:
                 #this is a chap. I used the object itself in a try to know when to break out. But 
                 #it doesnt fail on nested objects so really need to be more direct and check for 
@@ -65,14 +65,14 @@ class Command(BaseCommand):
                 #objects that have a title and categories list recursively 
                 object = (data[z]['contents'][y]['contents'][x])
                 print("z =", z)
-                while y < 5:
+                while y < 20:
                 #cant zero out x in the x loop 
                     try:
                         #using the try on the obejct as a proxy for where I want the loop to end
                         #itll trigger the except when there is no object 
                         object = (data[z]['contents'][y]['contents'][x])
                         print("y =", y)
-                        while x < 13:
+                        while x < 100:
                             try:
                                 object = (data[z]['contents'][y]['contents'][x])
                                 print("x =", x)  

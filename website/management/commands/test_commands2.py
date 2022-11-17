@@ -1,10 +1,10 @@
-from website.models import Sefer, PrimaryCategory, SecondaryCategory
+from website.models import Sefer, PrimaryCategory, SecondaryCategory, TertiaryCategory, QuaternaryCategory
 
 
 from django.core.management.base import BaseCommand
 
 # the thing itself but iirc only that the program needs to grab the names of the things as we 
-# go down.
+# go down can use this for some of the tertuary and fourth line .
 
 import requests, json, pandas as pd
 
@@ -53,6 +53,9 @@ class Command(BaseCommand):
                                 object = (data[z]['contents'][y]['contents'][0]['contents'][0]['contents'][x])
                                 print("x =", x)  
                                 primary = object['categories'][0]
+                                secondary = object['categories'][1]
+                                tertiary = object['categories'][2]
+                                quaternary = object['categories'][3]
                                 id = PrimaryCategory.objects.get(name = primary)
                                 print("primary", primary, type(primary))
 
@@ -64,14 +67,26 @@ class Command(BaseCommand):
                                     print("no secondary")
                                     pass
                                 if SecondaryCategory.objects.filter(name = secondary).exists():
-                                    print("we already have this one ")
+                                    print("we already have this secondary ")
                                     #there is a potential issue here dependent on how the id works
                                 else:
-                                    print("else ")
+                                    print("else sec")
                                     new_sec_cat = SecondaryCategory(name = secondary, primary_category = id)
                                     print("new_sec_cat before save")
                                     new_sec_cat.save()
                                     print("new sec cat saved succesfully")
+                                if TertiaryCategory.objects.filter(name = tertiary).exists():
+                                    print("we already have this tertiary")
+                                    #there is a potential issue here dependent on how the id works
+                                else:
+                                    print("else tert ")
+                                    new_tert_cat = TertiaryCategory(name = tertiary, category_two = tertiary)
+                                    print("new_sec_cat before save")
+                                    new_tert_cat.save()
+                                    print("new tert cat saved succesfully")
+                                    
+                                id2 = SecondaryCategory.objects.get(name = secondary)
+                                id3 = SecondaryCategory.objects.get(name = tertiary)
                                 #right now failing on x = 1 cuz there are two secondary cats with
                                 #the same name and there is no way to get request them 
                                 sec_id = SecondaryCategory.objects.get(name = secondary)

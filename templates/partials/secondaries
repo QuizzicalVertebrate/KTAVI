@@ -1,6 +1,6 @@
 <select class="custom-select mb-4" name='secondary_category' hx-get="{% url 'tertiaries' %}" hx-trigger="change"
     hx-target="#tertiaries">>
-    <option selected> Open this select menu</option>
+    <option selected> Choose Your Fighter</option>
     {% for name in secondary_category %}
     <option value="{{name.pk}}">{{name.name}}</option>
     {% endfor %}

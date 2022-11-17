@@ -16,7 +16,7 @@ r = requests.get("http://www.sefaria.org/api/index/")
 
 data = json.loads(r.text)
 
-object = (data[0]['contents'][3]['contents'][2]['contents'][0])
+object = (data[0]['contents'][3]['contents'][0]['contents'][0]['contents'][0])
 # for x in object['categories']:
 #     print(x)
 

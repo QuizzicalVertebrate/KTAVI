@@ -49,34 +49,33 @@ class SecondaryCategory(models.Model):
     def __str__(self):
         return self.name 
 
-class TertiaryCategory(models.Model):
-    name = models.CharField(max_length= 50, default='we have a miss here')
-    category_two = models.ForeignKey(SecondaryCategory, 
-    on_delete= models.CASCADE, related_name='tertiary_category')
+# class TertiaryCategory(models.Model):
+#     name = models.CharField(max_length= 50, default='we have a miss here')
+#     category_two = models.ForeignKey(SecondaryCategory, 
+#     on_delete= models.CASCADE, null = True, related_name='tertiary_category')
 
-    def __str__(self):
-        return self.name 
+#     def __str__(self):
+#         return self.name 
 
 
-class QuaternaryCategory(models.Model):
-    name = models.CharField(max_length= 50, default='we have a miss here')
-    category_three = models.ForeignKey(TertiaryCategory, 
-    on_delete= models.CASCADE, related_name='quaternary_category')
+# class QuaternaryCategory(models.Model):
+#     name = models.CharField(max_length= 50, default='we have a miss here')
+#     category_three = models.ForeignKey(TertiaryCategory, 
+#     on_delete= models.CASCADE, null = True, related_name='quaternary_category')
 
-    def __str__(self):
-        return self.name 
+#     def __str__(self):
+#         return self.name 
 
 class Sefer(models.Model):
-    book = models.CharField(max_length= 100, blank= True)
-#this should eventually be a foreign key to the primary cat class 
+    book = models.CharField(max_length= 100, blank= True, primary_key= True)
     prime_cat = models.ForeignKey(PrimaryCategory, 
-    on_delete= models.CASCADE,  default = 0 , related_name= 'prime_cat')
+    on_delete= models.CASCADE,  null = True, related_name= 'prime_cat')
     secondary_cat = models.ForeignKey(SecondaryCategory, 
-    on_delete= models.CASCADE, related_name= 'secondary_cat', blank = True)
-    tertiary_cat = models.ForeignKey(TertiaryCategory, 
-    on_delete= models.CASCADE, related_name= 'tertiary_cat', blank = True)
-    quaternary_cat = models.ForeignKey(QuaternaryCategory, 
-    on_delete= models.CASCADE,  related_name= 'quaternary_cat', blank = True)
+    on_delete= models.CASCADE, null = True, related_name= 'secondary_cat', blank = True)
+    # tertiary_cat = models.ForeignKey(TertiaryCategory, 
+    # on_delete= models.CASCADE, null = True, related_name= 'tertiary_cat', blank = True)
+    # quaternary_cat = models.ForeignKey(QuaternaryCategory, 
+    # on_delete= models.CASCADE, null = True,  related_name= 'quaternary_cat', blank = True)
     
     def __str__(self):
         return '{} - {} ({})'.format(self.pk, self.book, self.prime_cat, self.secondary_cat)
